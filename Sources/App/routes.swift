@@ -13,4 +13,8 @@ public func routes(_ router: Router) throws {
             "name": req.parameters.next(String.self)
         ])
     }
+    
+    router.get("marco") { req in
+        return "YEESSSSSS"
+    }
 }
