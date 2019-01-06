@@ -9,6 +9,9 @@ let package = Package(
 
         // 🍃 An expressive, performant, and extensible templating language built for Swift.
         .package(url: "https://github.com/vapor/leaf.git", from: "3.0.0"),
+        
+        // Vapor plugin for type-safe, transformable HTML views using swift-html.
+        .package(url: "https://github.com/pointfreeco/swift-html-vapor.git", from: "0.1.0")
     ],
     targets: [
         .target(name: "App", dependencies: ["Leaf", "Vapor"]),
