@@ -14,7 +14,7 @@ let package = Package(
         .package(url: "https://github.com/pointfreeco/swift-html-vapor.git", from: "0.1.0")
     ],
     targets: [
-        .target(name: "App", dependencies: ["Leaf", "Vapor"]),
+        .target(name: "App", dependencies: ["Leaf", "Vapor", "HtmlVaporSupport"]),
         .target(name: "Run", dependencies: ["App"]),
         .testTarget(name: "AppTests", dependencies: ["App"])
     ]
