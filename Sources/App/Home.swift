@@ -22,7 +22,8 @@ extension HtmlProvider {
         return html([
             head([
                 title("Marco Capano"),
-                style(unsafe: stylesheet)
+                style(unsafe: stylesheet),
+                meta(viewport: .width(.deviceWidth), .initialScale(1))
             ]),
             body([
                 headerComponent(),
