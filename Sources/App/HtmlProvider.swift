@@ -77,6 +77,7 @@ enum HtmlProvider {
 
     .page-content {
         display: flex;
+        flex-flow: column wrap;
         align-content: center;
         margin: 0 auto;
         width: 75%;
