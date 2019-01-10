@@ -20,7 +20,7 @@ enum HtmlProvider {
         margin: 1.5rem 1rem 3rem 1rem;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 30rem) {
         .nav-container {
             flex-flow: column nowrap;
             justify-content: flex-start;
@@ -35,7 +35,7 @@ enum HtmlProvider {
         font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 30rem) {
         html {
             font-size: 16px
         }
@@ -82,7 +82,7 @@ enum HtmlProvider {
         width: 75%;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 30rem) {
         .page-content {
             margin: 1.5rem 1rem 3rem 1rem;
         }
