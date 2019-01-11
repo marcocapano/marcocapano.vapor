@@ -60,7 +60,9 @@ enum HtmlProvider {
         letter-spacing: 1px;
         padding: 0;
         text-transform: uppercase;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
     .links-container .link {
