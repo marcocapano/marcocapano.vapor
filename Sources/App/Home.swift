@@ -18,10 +18,18 @@ extension HtmlProvider {
         let mail = Attribute<Tag.A>("href", "mailto:marco24capano@icloud.com")
         let twitter = Attribute<Tag.A>("href", "https://twitter.com/marcocapano1")
         
+        /* Per quando la pagina writing sarà pronta
+         
+         p(["I love basketball 🏀, books 📚, TV series 📺 and tech 💻. I like contributing to open source ", a([`class`("link"), openSource], ["(see here)"]), " and recently started contributing ", a([`class`("link"), writing],["to the italian version of NSHipster.com"]), ". You can find some of the apps I published on the App Store ",
+         a([`class`("link"), apps], ["here"]), "."
+         ]),
+         
+         */
+        
         let content = HtmlProvider.pageContent([
             p([
                 "Hi, it's Marco!👨🏻‍💻 I build iOS apps 🍎, contribute to open source and study Computer Engineering. I became an iOS Developer in 2016 studying at the Apple Developer Academy in Italy, then started working while starting my Computer Engineering program."]),
-            p(["I love basketball 🏀, books 📚, TV series 📺 and tech 💻. I like contributing to open source ", a([`class`("link"), openSource], ["(see here)"]), " and recently started contributing ", a([`class`("link"), writing],["to the italian version of NSHipster.com"]), ". You can find some of the apps I published on the App Store ",
+            p(["I love basketball 🏀, books 📚, TV series 📺 and tech 💻. I like contributing to open source ", a([`class`("link"), openSource], ["(see here)"]), " and recently started contributing to the italian version of NSHipster.com . You can find some of the apps I published on the App Store ",
                a([`class`("link"), apps], ["here"]), "."
             ]),
             

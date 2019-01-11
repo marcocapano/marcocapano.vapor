@@ -21,8 +21,8 @@ extension HtmlProvider {
                 div([`class`("links-container")], [
                     a([`class`("link"), homeLink], ["Home"]),
                     a([`class`("link"), appsLink], ["Apps"]),
-                    a([`class`("link"), openSourceLink], ["Open Source"]),
-                    a([`class`("link"), writingLink], ["Writing"])
+                    a([`class`("link"), openSourceLink], ["Open Source"])
+                    //a([`class`("link"), writingLink], ["Writing"])
                 ])
             ])
         ])
