@@ -9,4 +9,8 @@ public func routes(_ router: Router) throws {
         return HtmlProvider.home()
     }
     
+    router.get("opensource") { _ in
+        return HtmlProvider.openSource()
+    }
+    
 }
