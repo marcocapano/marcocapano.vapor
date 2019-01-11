@@ -13,4 +13,8 @@ public func routes(_ router: Router) throws {
         return HtmlProvider.openSource()
     }
     
+    router.get("apps") { _ in
+        return HtmlProvider.apps()
+    }
+    
 }
