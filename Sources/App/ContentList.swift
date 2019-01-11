@@ -11,6 +11,7 @@ import Html
 struct Item {
     let title: String
     let url: String
+    let tag: String
     let description: String
 }
 
@@ -19,9 +20,13 @@ extension HtmlProvider {
         return items.map { item in
             let url = Attribute<Tag.A>("href", item.url)
             let link = a([`class`("logo"),url], [.text(item.title)])
+            let opacity = Attribute<Tag.H4>("style", "opacity:0.6")
             
             return p([
-                h2([link]),
+                div([
+                    h4([opacity], [.text("#️⃣ "), .text(item.tag)]),
+                    h2([link])
+                ]),
                 .text(item.description)
             ])
         }
