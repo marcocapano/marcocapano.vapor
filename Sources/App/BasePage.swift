@@ -8,6 +8,10 @@
 import Foundation
 import Html
 
+public func sizes(_ width: Int, height: Int) -> Attribute<Tag.Link> {
+    return .init("sizes", "\(width)x\(height)")
+}
+
 extension HtmlProvider {
     static func basePage(pageTitle: String, description: String, keywords: [String], _ content: [Node]) -> Node {
         var baseContent = content
@@ -18,7 +22,7 @@ extension HtmlProvider {
             , "iOS", "mobile", "Objective-C"
         ]
         
-        let imageRef = "https://github.com/marcocapano/marcocapano.vapor/raw/master/Public/images/marco.jpeg"
+        let imageRef = "images/marco.jpeg"
         
         return html([
             head([
@@ -26,11 +30,19 @@ extension HtmlProvider {
                 style(unsafe: stylesheet),
                 meta(viewport: .width(.deviceWidth), .initialScale(1)),
                 meta(keywords: defaultKeywords + keywords),
+                link([rel(Rel(rawValue: "apple-touch-icon")), sizes(180, height: 180), href("/apple-touch-icon.png")]),
+                link([rel(.icon), type(.image(.png)), sizes(32, height: 32), href("/favicon-32x32.png")]),
+                link([rel(.icon), type(.image(.png)), sizes(16, height: 16), href("/favicon-16x16.png")]),
+                link([rel(Rel(rawValue: "manifest")), href("/site.webmanifest")]),
+                link([rel(Rel(rawValue: "mask-icon")), href("safari-pinned-tab.svg"), Attribute<Tag.Link>("color", "#5bbad5")]),
+                meta(name: "msapplication-TileColor", content: "#da532c"),
+                meta(name: "theme-color", content: "#ffffff"),
                 
                 meta(name: "author", content: "Marco Capano"),
                 meta(name: "name", content: pageTitle),
                 meta(name: "description", content: description),
                 meta(name: "image", content: imageRef),
+                
                 
                 meta(name: "twitter:site", content: "@marcocapano1"),
                 meta(name: "twitter:title", content: pageTitle),
