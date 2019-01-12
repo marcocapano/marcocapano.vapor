@@ -11,6 +11,7 @@ import Html
 enum HtmlProvider {
     
     static let stylesheet = """
+
     .nav-container {
         background-color: #FFFFFF;
         display: flex;
@@ -33,6 +34,12 @@ enum HtmlProvider {
         font-size: 19px;
         line-height: 1.4;
         font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    header {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
     }
 
     @media screen and (max-width: 30rem) {
