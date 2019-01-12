@@ -17,8 +17,8 @@ extension HtmlProvider {
             "Swift", "Apple", "Marco Capano", "Developer"
             , "iOS", "mobile", "Objective-C"
         ]
-            
-        let imageRef = "https://github.com/marcocapano/marcocapano.vapor/tree/master/Public/images/marco.jpg"
+        
+        let imageRef = "Public/images/marco.jpeg"
         
         return html([
             head([
