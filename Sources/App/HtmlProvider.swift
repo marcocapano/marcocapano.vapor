@@ -39,6 +39,9 @@ enum HtmlProvider {
     header {
         position: sticky;
         position: -webkit-sticky;
+        position: -moz-sticky;
+        position: -ms-sticky;
+        position: -o-sticky;
         top: 0;
     }
 
