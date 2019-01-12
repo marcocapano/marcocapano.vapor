@@ -43,7 +43,9 @@ extension HtmlProvider {
             ])
         ])
         
-        return basePage([content])
+        return basePage(pageTitle: "Home", description: "The personal website of Marco Capano, iOS Developer", keywords: [
+            "Contacts", "GitHub", "Twitter", "Linkedin", "Email", "presentation", "about"
+        ], [content])
     }
 }
 

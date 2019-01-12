@@ -15,7 +15,7 @@ extension HtmlProvider {
             Item(title: "Splosh", url: "https://itunes.apple.com/it/app/splosh-lavanderia-domicilio/id1156883167", tag: "OBJECTIVE-C", description: "Splosh is a Laundry & Dry Cleaning Service mostly operating in Milan. Just place your order on the app and Splosh will collect, clean and deliver your clothes wherever you want in 24h. Splosh is available on the App Store since November 2016.")
         ]
         
-        return basePage([pageContent(list(apps))])
+        return basePage(pageTitle: "Apps", description: "Apps published by Marco Capano", keywords: ["app", "app store", "portfolio", "experience"], [pageContent(list(apps))])
     }
 }
 

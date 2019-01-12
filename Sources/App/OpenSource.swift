@@ -17,6 +17,6 @@ extension HtmlProvider {
             Item(title: "🚀 Swifter Swift", url: "https://github.com/SwifterSwift/SwifterSwift", tag: "CONTRIBUTOR", description: "SwifterSwift is a collection of over 500 native Swift extensions, with handy methods, syntactic sugar, and performance improvements for wide range of primitive data types, UIKit and Cocoa classes –over 500 in 1– for iOS, macOS, tvOS, watchOS and Linux.")
         ]
         
-        return basePage([pageContent(list(projects))])
+        return basePage(pageTitle: "Open source", description: "Open source projects by Marco Capano", keywords: ["GitGub", "git", "open source", "community"], [pageContent(list(projects))])
     }
 }

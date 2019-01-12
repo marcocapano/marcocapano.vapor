@@ -82,12 +82,13 @@ enum HtmlProvider {
         flex-flow: column wrap;
         align-content: center;
         margin: 0 auto;
-        width: 75%;
+        width: 53%;
     }
 
     @media screen and (max-width: 30rem) {
         .page-content {
             margin: 1.5rem 1rem 3rem 1rem;
+            width: 75%;
         }
     }
 
