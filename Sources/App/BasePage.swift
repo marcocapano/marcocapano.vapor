@@ -33,13 +33,13 @@ extension HtmlProvider {
                 meta(name: "image", content: imageRef),
                 
                 meta(name: "twitter:site", content: "@marcocapano1"),
-                meta(property: "twitter:title", content: pageTitle),
+                meta(name: "twitter:title", content: pageTitle),
                 meta(name: "twitter:description", content: description),
                 meta(name: "twitter:creator", content: "@marcocapano1"),
                 meta(name: "twitter:image:src", content: imageRef),
                 meta(name: "twitter:image", content: imageRef),
                 
-                meta(name: "og:title", content: pageTitle),
+                meta(property: "og:title", content: pageTitle),
                 meta(property: "og:type", content: "article"),
                 meta(property: "og:image", content: imageRef),
                 meta(property: "og:description", content: description),
