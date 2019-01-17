@@ -106,66 +106,9 @@ enum HtmlProvider {
     
     static let articlesStylesheet = """
 
-    h1, h2, h3, h4, h5, h6 {
-        font-weight: normal;
-        color:       #111;
-    }
-
-    h1 {
-        font-size:     3em;
-        line-height:   1;
-        margin-bottom: 0.5em;
-        margin-top:    2em;
-    }
-
-    h2 {
-        font-size:     2em;
-        margin-bottom: 0.75em;
-        margin-top:    1.5em;
-    }
-
-    h3 {
-        font-size:   1.5em;
-        line-height: 1;
-        margin-top:  1.5em;
-    }
-
-    h4 {
-        font-size:     1.2em;
-        line-height:   1.25;
-        margin-bottom: 1.25em;
-    }
-
-    h5 {
-        font-size:     1em;
-        font-weight:   bold;
-        margin-bottom: 1.5em;
-    }
-
-    h6 {
-        font-size:   1em;
-        font-weight: bold;
-    }
-
-    h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
-        margin: 0;
-    }
-
     img {
         max-width: 100%;
-    }
-
-    p {
-        margin: 0 0 1.5em;
-    }
-
-    a:focus, a:hover {
-        color: #09f;
-    }
-
-    a {
-        color: #06c;
-        text-decoration: underline;
+        margin: 0;
     }
 
     blockquote {
@@ -415,13 +358,6 @@ enum HtmlProvider {
         margin: 0;
     }
     
-    h1 {
-        font-size: 2em;
-    }
-    
-    h2 {
-        font-size: 1.8em;
-    }
     }
     """
     
