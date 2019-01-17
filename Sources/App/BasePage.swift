@@ -13,7 +13,7 @@ public func sizes(_ width: Int, height: Int) -> Attribute<Tag.Link> {
 }
 
 extension HtmlProvider {
-    static func basePage(pageTitle: String, description: String, keywords: [String], _ content: [Node]) -> Node {
+    static func basePage(pageTitle: String, description: String, keywords: [String], isArticle: Bool = false, _ content: [Node]) -> Node {
         var baseContent = content
         baseContent.insert(headerComponent(), at: 0)
         
@@ -23,11 +23,12 @@ extension HtmlProvider {
         ]
         
         let imageRef = "images/marco.jpeg"
+        let stl = isArticle ? stylesheet + articlesStylesheet : stylesheet
         
         return html([
             head([
                 title(pageTitle),
-                style(unsafe: stylesheet),
+                style(unsafe: stl),
                 meta(viewport: .width(.deviceWidth), .initialScale(1)),
                 meta(keywords: defaultKeywords + keywords),
                 link([rel(Rel(rawValue: "apple-touch-icon")), sizes(180, height: 180), href("/apple-touch-icon.png")]),

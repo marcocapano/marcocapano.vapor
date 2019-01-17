@@ -1,0 +1,80 @@
+<h1>Layout </h1>
+
+<p>📏📐 A lightweight wrapper around AutoLayout.</p>
+
+<h2>Installation</h2>
+
+<p>Clone the repository and drop the Sources folder into your project.</p>
+
+<p>Hopefully the project will soon be available via Cocoapods.</p>
+
+<h2>Discussion</h2>
+
+<p>A lot of different layout extensions exist out there, proposing different solutions to the problem of NSLayoutAnchor’s APIs.</p>
+
+<p>Some use functions to compose layouts, some use a more functional approach,</p>
+
+<p>some use a proxy approach, some simply add syntactic sugar to the existing API’s.</p>
+
+<p>Sometimes though you might want to use <strong>different approaches</strong> to layout within the <strong>same app</strong>. </p>
+
+<p>Layout doesn’t want to pick one solution and make you choose. Instead, it gives you the choice and flexibility to use whatever approach you want without adding layers of abstractions, allowing you to even pick and mix the <strong>standard APIs</strong> for some cases.</p>
+
+<h2>Usage</h2>
+
+<p>Using Layout, you can</p>
+
+<h3>Use common layouts:</h3>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-comment">//This will wrap view inside container, with margins.
+</span>view.<span class="syntax-all syntax-constant">box</span>(<span class="syntax-all syntax-constant">in</span>: container, <span class="syntax-all syntax-constant">edges</span>: <span class="syntax-all syntax-constant">UIEdgeInsets</span>(<span class="syntax-all syntax-constant">top</span>: <span class="syntax-all syntax-constant">8</span>, <span class="syntax-all syntax-constant">left</span>: <span class="syntax-all syntax-constant">8</span>, <span class="syntax-all syntax-constant">bottom</span>: <span class="syntax-all syntax-constant">-8</span>, <span class="syntax-all syntax-constant">right</span>: <span class="syntax-all syntax-constant">-8</span>))
+
+<span class="syntax-all syntax-comment">//This will set the button&#39;s center.
+</span>button.<span class="syntax-all syntax-constant">center</span>(<span class="syntax-all syntax-constant">in</span>: view)</code></pre>
+
+<h3>Set a single constraint:</h3>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-comment">//Say we want the button&#39;s width to be half that of the view
+</span>button.<span class="syntax-all syntax-parameter">layoutProxy</span>.<span class="syntax-all syntax-parameter">width</span>.<span class="syntax-all syntax-constant">equal</span>(<span class="syntax-all syntax-constant">to</span>: view.<span class="syntax-all syntax-parameter">widthAnchor</span>, <span class="syntax-all syntax-constant">multiplier</span>: <span class="syntax-all syntax-constant">0.5</span>) 
+
+<span class="syntax-all syntax-comment">//You can even store it to activate/deactivate later
+</span><span class="syntax-all syntax-keyword">let</span> heightConstraint <span class="syntax-all syntax-keyword">=</span> button.<span class="syntax-all syntax-parameter">layoutProxy</span>.<span class="syntax-all syntax-parameter">height</span>.<span class="syntax-all syntax-constant">equal</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">100</span>)
+heightConstraint.<span class="syntax-all syntax-parameter">isActive</span> <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-constant">false</span></code></pre>
+
+<h3>Set them all:</h3>
+
+<pre><code class="code-highlighted code-swift">label.<span class="syntax-all syntax-parameter">layout</span> {
+    <span class="syntax-all syntax-constant">$0</span>.<span class="syntax-all syntax-parameter">height</span>.<span class="syntax-all syntax-constant">equal</span>(<span class="syntax-all syntax-constant">to</span>: view.<span class="syntax-all syntax-parameter">heightAnchor</span>, <span class="syntax-all syntax-constant">multiplier</span>: <span class="syntax-all syntax-constant">0.33</span>)
+    <span class="syntax-all syntax-constant">$0</span>.<span class="syntax-all syntax-parameter">width</span>.<span class="syntax-all syntax-constant">equal</span>(<span class="syntax-all syntax-constant">to</span>: view.<span class="syntax-all syntax-parameter">widthAnchor</span>, <span class="syntax-all syntax-constant">multiplier</span>: <span class="syntax-all syntax-constant">0.5</span>)
+    <span class="syntax-all syntax-constant">$0</span>.<span class="syntax-all syntax-parameter">centerX</span>.<span class="syntax-all syntax-constant">equal</span>(<span class="syntax-all syntax-constant">to</span>: view.<span class="syntax-all syntax-parameter">centerXAnchor</span>, <span class="syntax-all syntax-constant">offsetBy</span>: <span class="syntax-all syntax-constant">16</span>)
+    <span class="syntax-all syntax-constant">$0</span>.<span class="syntax-all syntax-parameter">centerY</span>.<span class="syntax-all syntax-constant">equal</span>(<span class="syntax-all syntax-constant">to</span>: view.<span class="syntax-all syntax-parameter">centerYAnchor</span>)
+}</code></pre>
+
+<h3>Or even go <em>fully functional</em>:</h3>
+
+<pre><code class="code-highlighted code-swift">label.<span class="syntax-all syntax-parameter">layout</span> {
+     <span class="syntax-all syntax-constant">$0</span>.<span class="syntax-all syntax-parameter">height</span> <span class="syntax-all syntax-keyword">==</span> view.<span class="syntax-all syntax-parameter">heightAnchor</span><span class="syntax-all syntax-keyword">/</span><span class="syntax-all syntax-constant">3</span>
+     <span class="syntax-all syntax-constant">$0</span>.<span class="syntax-all syntax-parameter">width</span> <span class="syntax-all syntax-keyword">==</span> view.<span class="syntax-all syntax-parameter">widthAnchor</span><span class="syntax-all syntax-keyword">*</span><span class="syntax-all syntax-constant">0.5</span>
+     <span class="syntax-all syntax-constant">$0</span>.<span class="syntax-all syntax-parameter">centerX</span> <span class="syntax-all syntax-keyword">==</span> view.<span class="syntax-all syntax-parameter">centerXAnchor</span> <span class="syntax-all syntax-keyword">+</span> <span class="syntax-all syntax-constant">16</span>
+     <span class="syntax-all syntax-constant">$0</span>.<span class="syntax-all syntax-parameter">centerY</span> <span class="syntax-all syntax-keyword">==</span> view.<span class="syntax-all syntax-parameter">centerYAnchor</span>
+}</code></pre>
+
+<h2>Plans</h2>
+
+<p>The project is pretty usable but lacks some things:</p>
+
+<ol>
+	<li>Tests for functional operators and UIView convenience functions</li>
+	<li>Cocoapods support</li>
+	<li>Travis configuration</li>
+</ol>
+
+<h2>Acknowledgment</h2>
+
+<p>The idea came from John Sundell’s article <a href="">”Building DSLs in Swift” </a><a href="">1</a>. I found it really interesting and thought that we see to many good ideas and starting points inside blog posts, tutorials and books and most of the times it ends there.</p>
+
+<p>Instead, they could act as fuel for many many open source projects, so I decided to continue the project and adding operators, some functions and a test suite.</p>
+
+<p><a href="">1</a>: https://www.swiftbysundell.com/posts/building-dsls-in-swift</p>
+
+
