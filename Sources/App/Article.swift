@@ -30,20 +30,16 @@ extension HtmlProvider {
                 articleContent = error("Ops, page not found! You might want to go back :(")
             }
             
-            let response = Response(http: HTTPResponse(status: .ok), using: req)
-            
             let pageNode = basePage(pageTitle: title, description: description, keywords: keywords, isArticle: true, [
                 pageContent(["#PLACEHOLDER#"])
             ])
             
             let pageBody = render(pageNode).replacingOccurrences(of: "#PLACEHOLDER#", with: articleContent)
-            
+            let response = Response(http: HTTPResponse(status: .ok), using: req)
             response.http.body = HTTPBody(string: pageBody)
             response.http.headers.add(name: .contentType, value: "text/html")
             
             promise.succeed(result: response)
-            
-            
         }
         
         return promise.futureResult

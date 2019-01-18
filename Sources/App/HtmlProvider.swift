@@ -43,6 +43,9 @@ enum HtmlProvider {
         position: -ms-sticky;
         position: -o-sticky;
         top: 0;
+        -webkit-box-shadow:0px 4px 4px -2px #c8c8c8;
+        -moz-box-shadow:0px 4px 4px -2px #c8c8c8;
+        box-shadow:0px 4px 4px -2px #c8c8c8;
     }
 
     @media screen and (max-width: 30rem) {
