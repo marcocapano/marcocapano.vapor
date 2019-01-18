@@ -43,9 +43,9 @@ enum HtmlProvider {
         position: -ms-sticky;
         position: -o-sticky;
         top: 0;
-        -webkit-box-shadow:0px 4px 4px -2px #c8c8c8;
-        -moz-box-shadow:0px 4px 4px -2px #c8c8c8;
-        box-shadow:0px 4px 4px -2px #c8c8c8;
+        -webkit-box-shadow:0px 4px 4px -2px rgba(200,200,200,0.75);
+        -moz-box-shadow:0px 4px 4px -2px rgba(200,200,200,0.75);
+        box-shadow:0px 4px 4px -2px rgba(200,200,200,0.75);
     }
 
     body {
