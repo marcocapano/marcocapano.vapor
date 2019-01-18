@@ -48,6 +48,11 @@ enum HtmlProvider {
         box-shadow:0px 4px 4px -2px #c8c8c8;
     }
 
+    body {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
     @media screen and (max-width: 30rem) {
         html {
             font-size: 16px
