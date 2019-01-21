@@ -218,6 +218,7 @@ enum HtmlProvider {
     code {
         font-family: 'Menlo', monospace;
         font-size:   10.5pt;
+        overflow-x: scroll;
     }
 
     p > code {
