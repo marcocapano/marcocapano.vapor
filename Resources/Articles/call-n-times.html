@@ -1,0 +1,73 @@
+<h1>Calling a function <em>n</em> times with the result of each call</h1>
+
+<p>Today I faced this question from a tweet by <a href="https://twitter.com/zats">Sash Zats</a>: how does one call a function n times, using as a parameter for each call the result of the <em>previous</em> call? </p>
+
+<figure><img src="Images/sashTweet.png"/></figure>
+
+<p>Sure, assuming we want to call a function 5 times, one might just do this:</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-comment">///Adds 5 to a number
+</span><span class="syntax-all syntax-keyword">func</span> <span class="syntax-all syntax-entity">addFive</span>(<span class="syntax-all syntax-entity">to</span> <span class="syntax-all syntax-parameter">number</span>: <span class="syntax-all syntax-constant">Int</span>) <span class="syntax-all syntax-keyword">-&gt;</span> <span class="syntax-all syntax-constant">Int</span> {
+    <span class="syntax-all syntax-keyword">return</span> number <span class="syntax-all syntax-keyword">+</span> <span class="syntax-all syntax-constant">5</span>
+}
+
+<span class="syntax-all syntax-keyword">let</span> result <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">2</span>)))))
+<span class="syntax-all syntax-constant">print</span>(result) <span class="syntax-all syntax-comment">//27
+</span></code></pre>
+
+<p>But is that what we <em>really</em> want to write?</p>
+
+<h2>Standard Library to the Rescue</h2>
+
+<p>I did some research, then found a response from <a href="https://twitter.com/chriseidhof">Chris Eidhof</a>, which mentioned a type called <code>UnfoldSequence</code>.</p>
+
+<p>Turns out, the Standard Library has a function called <code>sequence(first:next:)</code> that does just that. From the documentation:</p>
+
+<blockquote>
+<p>Returns a sequence formed from <code>first</code> and repeated lazy applications of <code>next</code>.</p>
+</blockquote>
+
+<p>For completeness, here’s the entire function signature:</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-comment">/// - Parameter first: The first element to be returned from the sequence.
+</span><span class="syntax-all syntax-comment">/// - Parameter next: A closure that accepts the previous sequence element and
+</span><span class="syntax-all syntax-comment">///   returns the next element.
+</span><span class="syntax-all syntax-comment">/// - Returns: A sequence that starts with `first` and continues with every
+</span><span class="syntax-all syntax-comment">///   value returned by passing the previous element to `next`.
+</span><span class="syntax-all syntax-keyword">public</span> <span class="syntax-all syntax-keyword">func</span> <span class="syntax-all syntax-entity">sequence</span>&lt;<span class="syntax-all syntax-constant">T</span>&gt;(<span class="syntax-all syntax-entity">first</span>: T, <span class="syntax-all syntax-entity">next</span>: <span class="syntax-all syntax-keyword">@escaping</span> (T) <span class="syntax-all syntax-keyword">-&gt;</span> T<span class="syntax-all syntax-keyword">?</span>) <span class="syntax-all syntax-keyword">-&gt;</span> <span class="syntax-all syntax-constant">UnfoldFirstSequence</span>&lt;T&gt;</code></pre>
+
+<p>But we need something more right? We need to control the number of times the function needs to be called. We don’t want to clutter the call site with a bunch of calls to <code>next()</code>.</p>
+
+<p>So I went one step further and wrote this little function that does just what we need:</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-comment">/// Calls a function n times passing the result of each call into the next call.
+</span><span class="syntax-all syntax-keyword">func</span> <span class="syntax-all syntax-entity">call</span>&lt;<span class="syntax-all syntax-constant">T</span>&gt;(<span class="syntax-all syntax-entity">_</span> <span class="syntax-all syntax-parameter">function</span>: <span class="syntax-all syntax-keyword">@escaping</span> (T) <span class="syntax-all syntax-keyword">-&gt;</span> T<span class="syntax-all syntax-keyword">?</span>, <span class="syntax-all syntax-entity">initialInput</span>: T, <span class="syntax-all syntax-entity">repetitions</span>: <span class="syntax-all syntax-constant">Int</span>) <span class="syntax-all syntax-keyword">-&gt;</span> T<span class="syntax-all syntax-keyword">?</span> {
+    <span class="syntax-all syntax-keyword">var</span> seq <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-constant">sequence</span>(<span class="syntax-all syntax-constant">first</span>: initialInput, <span class="syntax-all syntax-constant">next</span>: function)
+    
+    <span class="syntax-all syntax-keyword">var</span> result<span class="syntax-all syntax-keyword">:</span> T<span class="syntax-all syntax-keyword">?</span>
+    
+    <span class="syntax-all syntax-comment">//Doing it once more avoids seq.next()
+</span>    <span class="syntax-all syntax-keyword">for</span> <span class="syntax-all syntax-constant">_</span> <span class="syntax-all syntax-keyword">in</span> <span class="syntax-all syntax-constant">0</span><span class="syntax-all syntax-keyword">..&lt;</span>(repetitions <span class="syntax-all syntax-keyword">+</span> <span class="syntax-all syntax-constant">1</span>) {
+        result <span class="syntax-all syntax-keyword">=</span> seq.<span class="syntax-all syntax-constant">next</span>()
+    }
+    
+    <span class="syntax-all syntax-keyword">return</span> result
+}</code></pre>
+
+<p>Please note that we call <code>next()</code> <em>n+1 times</em> because otherwise the first call would result in the initial input being the output. </p>
+
+<h2>Wrapping up</h2>
+
+<p>We’ve seen how very little bit of work and some help from the Standard Library can make our life easier. Let’s see the final result!</p>
+
+<pre><code class="code-highlighted code-swift"><span class="syntax-all syntax-comment">//Before
+</span><span class="syntax-all syntax-keyword">let</span> manualResult <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">addFive</span>(<span class="syntax-all syntax-constant">to</span>: <span class="syntax-all syntax-constant">2</span>)))))
+
+<span class="syntax-all syntax-comment">//After
+</span><span class="syntax-all syntax-keyword">let</span> functionResult <span class="syntax-all syntax-keyword">=</span> <span class="syntax-all syntax-constant">call</span>(<span class="syntax-all syntax-entity">addFive</span>(<span class="syntax-all syntax-entity">to:</span>), <span class="syntax-all syntax-constant">initialInput</span>: <span class="syntax-all syntax-constant">2</span>, <span class="syntax-all syntax-constant">repetitions</span>: <span class="syntax-all syntax-constant">5</span>)</code></pre>
+
+<p>You can find the complete code in this <a href="https://gist.github.com/marcocapano/5f80311fb843d5b0c5148c790b8d346e">gist</a>.</p>
+
+<p>Hope you find it helpful! :)</p>
+
+
