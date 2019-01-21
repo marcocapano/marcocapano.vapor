@@ -30,6 +30,7 @@ extension HtmlProvider {
                 title(pageTitle),
                 style(unsafe: stl),
                 meta(viewport: .width(.deviceWidth), .initialScale(1)),
+                meta([Attribute<Tag.Meta>("charset", "utf-8")]),
                 meta(keywords: defaultKeywords + keywords),
                 link([rel(Rel(rawValue: "apple-touch-icon")), sizes(180, height: 180), href("/apple-touch-icon.png")]),
                 link([rel(.icon), type(.image(.png)), sizes(32, height: 32), href("/favicon-32x32.png")]),
