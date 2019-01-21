@@ -24,7 +24,7 @@ extension HtmlProvider {
             
             var articleContent: String
             
-            if let data = FileManager().contents(atPath: dir.workDir + "Resources/\(fileName).html") {
+            if let data = FileManager().contents(atPath: dir.workDir + "Resources/Articles/\(fileName).html") {
                 articleContent = String(data: data, encoding: .utf8) ?? error("Ops, unable to load the article, You might want to go back :(")
             } else {
                 articleContent = error("Ops, page not found! You might want to go back :(")

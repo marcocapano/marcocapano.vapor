@@ -13,7 +13,7 @@ extension HtmlProvider {
         let homeLink = Attribute<Tag.A>("href", "/")
         let appsLink = Attribute<Tag.A>("href", "/apps")
         let openSourceLink = Attribute<Tag.A>("href", "/opensource")
-        let writingLink = Attribute<Tag.A>("href", "/writing")
+        let writingLink = Attribute<Tag.A>("href", "/articles")
         
         return header([
             div([`class`("nav-container")], [
@@ -21,8 +21,8 @@ extension HtmlProvider {
                 div([`class`("links-container")], [
                     a([`class`("link"), homeLink], ["Home"]),
                     a([`class`("link"), appsLink], ["Apps"]),
-                    a([`class`("link"), openSourceLink], ["Open Source"])
-                    //a([`class`("link"), writingLink], ["Writing"])
+                    a([`class`("link"), openSourceLink], ["Open Source"]),
+                    a([`class`("link"), writingLink], ["Articles"])
                 ])
             ])
         ])
