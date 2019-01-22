@@ -46,7 +46,7 @@
     
     <span class="syntax-all syntax-keyword">var</span> result<span class="syntax-all syntax-keyword">:</span> T<span class="syntax-all syntax-keyword">?</span>
     
-    <span class="syntax-all syntax-comment">//Doing it once more avoids seq.next()
+    <span class="syntax-all syntax-comment">//we call next() n+1 times because otherwise the first call would result in the initial input being the output.
 </span>    <span class="syntax-all syntax-keyword">for</span> <span class="syntax-all syntax-constant">_</span> <span class="syntax-all syntax-keyword">in</span> <span class="syntax-all syntax-constant">0</span><span class="syntax-all syntax-keyword">..&lt;</span>(repetitions <span class="syntax-all syntax-keyword">+</span> <span class="syntax-all syntax-constant">1</span>) {
         result <span class="syntax-all syntax-keyword">=</span> seq.<span class="syntax-all syntax-constant">next</span>()
     }
