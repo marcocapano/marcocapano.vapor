@@ -23,7 +23,7 @@ public func routes(_ router: Router) throws {
     
     router.get("articles", String.parameter) { req -> Future<Response> in
         let articleName = try req.parameters.next(String.self)
-        return HtmlProvider.articlePage(on: req, fileName: articleName, title: "Article", description: "fdfsdf", keywords: ["d"])
+        return HtmlProvider.articlePage(on: req, fileName: articleName, title: articleName, description: "", keywords: [articleName])
     }
     
 }
