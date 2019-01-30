@@ -28,14 +28,14 @@ extension HtmlProvider {
         
         return html([
             head([
-                script([source],
-                       """
-                          window.dataLayer = window.dataLayer || [];
-                          function gtag(){dataLayer.push(arguments);}
-                          gtag('js', new Date());
-                        
-                          gtag('config', 'UA-133490817-1');
-                       """),
+                script([source], ""),
+                script("""
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-133490817-1');
+        """),
                 title(pageTitle),
                 style(unsafe: stl),
                 meta(viewport: .width(.deviceWidth), .initialScale(1)),
