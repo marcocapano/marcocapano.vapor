@@ -24,10 +24,11 @@ extension HtmlProvider {
         
         let imageRef = "images/marco.jpeg"
         let stl = isArticle ? stylesheet + articlesStylesheet : stylesheet
+        let source = Attribute<Tag.Script>("async src", "https://www.googletagmanager.com/gtag/js?id=UA-133490817-1")
         
         return html([
             head([
-                script([src("https://www.googletagmanager.com/gtag/js?id=UA-133490817-1")],
+                script([source],
                        """
                           window.dataLayer = window.dataLayer || [];
                           function gtag(){dataLayer.push(arguments);}
