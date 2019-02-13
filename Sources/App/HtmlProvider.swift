@@ -95,6 +95,13 @@ enum HtmlProvider {
         font-size: 28px;
     }
 
+    .contentLink {
+        color: rgb(51,51,51);
+        font-weight: bold;
+        font-size: 28px;
+        text-decoration: underline;
+    }
+
     .page-content {
         display: flex;
         flex-flow: column wrap;
@@ -214,17 +221,6 @@ enum HtmlProvider {
     }
 
     /* Code Highlighting */
-
-    code {
-        font-family: 'Menlo', monospace;
-        font-size:   10.5pt;
-        overflow-x: scroll;
-    }
-
-    p > code {
-        padding:    0.2em 0.4em;
-        background: #eee;
-    }
 
     pre {
         color:         #000;

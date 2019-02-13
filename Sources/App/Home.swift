@@ -12,7 +12,7 @@ extension HtmlProvider {
     static func home() -> Node {
         let apps = Attribute<Tag.A>("href", "/apps")
         let openSource = Attribute<Tag.A>("href", "/opensource")
-        let writing = Attribute<Tag.A>("href", "/writing")
+        let articles = Attribute<Tag.A>("href", "/articles")
         let linkedin = Attribute<Tag.A>("href", "https://www.linkedin.com/in/marcocapano/")
         let github = Attribute<Tag.A>("href", "https://github.com/marcocapano")
         let mail = Attribute<Tag.A>("href", "mailto:marco24capano@icloud.com")
@@ -29,7 +29,8 @@ extension HtmlProvider {
         let content = HtmlProvider.pageContent([
             p([
                 "Hi, it's Marco!👨🏻‍💻 I build iOS apps 🍎, contribute to open source and study Computer Engineering. I became an iOS Developer in 2016 studying at the Apple Developer Academy in Italy, then started working while starting my Computer Engineering program."]),
-            p(["I love basketball 🏀, books 📚, TV series 📺 and tech 💻. I like contributing to open source ", a([`class`("link"), openSource], ["(see here)"]), " and recently started contributing to the italian version of NSHipster.com, which will be online once the number of articles is big enough. You can find some of the apps I published on the App Store ",
+            p(["I love basketball 🏀, books 📚, TV series 📺 and tech 💻. I like contributing to open source ", a([`class`("link"), openSource], ["(see here)"]), " and recently started contributing to the italian version of NSHipster.com, which will be online once the number of articles is big enough. I like what I do and enjoy spending time outside of work to learn new things and get better, which is the reason why I also started publishing ", a([`class`("link"), articles], ["articles"]),
+               " on this website. You can find some of the apps I published on the App Store ",
                a([`class`("link"), apps], ["here"]), "."
             ]),
             
