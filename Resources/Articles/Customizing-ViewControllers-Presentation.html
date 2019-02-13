@@ -16,7 +16,7 @@
 <p>Reading the guide will reveal a few interesting points. When a view controller is about to be presented, UIKit does the following:</p>
 
 <ol>
-	<li>Calls the <code>presentationControllerForPresentedViewController:presentingViewController:sourceViewController:</code> method of the transitioning delegate to retrieve your custom presentation controller.</li>
+	<li>Calls the <code>presentationControllerForPresentedViewController</code> method of the transitioning delegate to retrieve your custom presentation controller.</li>
 	<li>Asks the transitioning delegate for the animator and interactive animator objects, if any.</li>
 	<li>Calls your presentation controller’s <code>presentationTransitionWillBegin</code> method.</li>
 	<li>Performs the transition animations. During the animation process, UIKit calls the <code>containerViewWillLayoutSubviews</code> and <code>containerViewDidLayoutSubviews</code> methods of your presentation controller so that you can adjust the layout of your custom views as needed.</li>
@@ -103,7 +103,7 @@
 
 <p>And the result will be this:</p>
 
-<figure><img src="/images/banner.mov"/></figure>
+<figure><img src="/images/banner.gif"/></figure>
 
 <h2>Conclusion</h2>
 
