@@ -63,9 +63,7 @@
 
 <p>We should take into account the safe area and calculate the required height given a fixed width (the screen width minus the insets).</p>
 
-<p>The tool for the job is the <code>UIView.systemLayoutSizeFitting</code></p>
-
-<p><code>systemLayoutSizeFitting(targetSize:horizontalFittingPriority:verticalFittingPriority:)</code> method, which calculates the required size for a view, based on its constraints or intrinsic content size.</p>
+<p>The tool for the job is the <code>UIView.systemLayoutSizeFitting</code> method, which calculates the required size for a view, based on its constraints or intrinsic content size.</p>
 
 <p>Our implementation should look something like this:</p>
 
