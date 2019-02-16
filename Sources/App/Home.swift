@@ -19,14 +19,6 @@ extension HtmlProvider {
         let twitter = Attribute<Tag.A>("href", "https://twitter.com/marcocapano1")
         let cv = Attribute<Tag.A>("href", "/cv_marcocapano.pdf")
         
-        /* Per quando la pagina writing sarà pronta
-         
-         p(["I love basketball 🏀, books 📚, TV series 📺 and tech 💻. I like contributing to open source ", a([`class`("link"), openSource], ["(see here)"]), " and recently started contributing ", a([`class`("link"), writing],["to the italian version of NSHipster.com"]), ". You can find some of the apps I published on the App Store ",
-         a([`class`("link"), apps], ["here"]), "."
-         ]),
-         
-         */
-        
         let content = HtmlProvider.pageContent([
             p([
                 "Hi, it's Marco!👨🏻‍💻 I build iOS apps 🍎, contribute to open source and study Computer Engineering. I became an iOS Developer in 2016 studying at the Apple Developer Academy in Italy, then started working while starting my Computer Engineering program."]),

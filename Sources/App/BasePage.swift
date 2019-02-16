@@ -16,6 +16,7 @@ extension HtmlProvider {
     static func basePage(pageTitle: String, description: String, keywords: [String], isArticle: Bool = false, _ content: [Node]) -> Node {
         var baseContent = content
         baseContent.insert(headerComponent(), at: 0)
+        baseContent.append(footerComponent())
         
         let defaultKeywords = [
             "Swift", "Apple", "Marco Capano", "Developer"

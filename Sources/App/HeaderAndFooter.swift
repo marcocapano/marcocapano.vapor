@@ -27,4 +27,15 @@ extension HtmlProvider {
             ])
         ])
     }
+    
+    static func footerComponent() -> Node {
+        return footer([
+            pre([
+                code([`class`("code-highlighted code-swift")], [
+                    span([`class`("syntax-all syntax-comment")],
+                         ["//Created by Marco Capano with Vapor💧"])
+                ])
+            ])
+        ])
+    }
 }

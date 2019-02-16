@@ -72,6 +72,10 @@ enum HtmlProvider {
         font-weight: normal;
     }
 
+    .link:hover {
+        text-decoration: underline;
+    }
+
     .links-container {
         font-weight: 600;
         font-size: 0.8rem;
@@ -108,6 +112,65 @@ enum HtmlProvider {
         align-content: center;
         margin: 0 auto;
         width: 53%;
+    }
+
+    /* Code Highlighting */
+
+    pre {
+        color:         #000;
+        text-align:    left;
+        line-height:   1.2em;
+        overflow-x:    scroll;
+        background:    #f8f8f8;
+        padding:       20pt;
+        margin:        20pt 0;
+        border-radius: 3pt;
+        white-space:   pre-wrap;
+        tab-size:      4;
+    }
+
+    .syntax-all {
+    }
+
+    .syntax-entity {
+        color: #6f42c1;
+    }
+
+    .syntax-tag {
+        color: #22863a;
+    }
+
+    .syntax-keyword {
+        color: #d73a49;
+    }
+
+    .syntax-parameter {
+        color: #24292e;
+    }
+
+    .syntax-string {
+        color: #003878;
+    }
+
+    .syntax-constant {
+        color: #005cc5;
+    }
+
+    .syntax-variable {
+        color: #e36209;
+    }
+
+    .syntax-escape {
+        font-weight: bold;
+        color:       #22863a;
+    }
+
+    .syntax-comment {
+        color: #6a737d;
+    }
+
+    .syntax-error {
+        color: #b31d28;
     }
 
     @media screen and (max-width: 30rem) {
@@ -218,65 +281,6 @@ enum HtmlProvider {
     li {
         margin-bottom: 0.75em;
         margin-top:    0.75em;
-    }
-
-    /* Code Highlighting */
-
-    pre {
-        color:         #000;
-        text-align:    left;
-        line-height:   1.2em;
-        overflow-x:    scroll;
-        background:    #f8f8f8;
-        padding:       20pt;
-        margin:        20pt 0;
-        border-radius: 3pt;
-        white-space:   pre-wrap;
-        tab-size:      4;
-    }
-
-    .syntax-all {
-    }
-
-    .syntax-entity {
-        color: #6f42c1;
-    }
-
-    .syntax-tag {
-        color: #22863a;
-    }
-
-    .syntax-keyword {
-        color: #d73a49;
-    }
-
-    .syntax-parameter {
-        color: #24292e;
-    }
-
-    .syntax-string {
-        color: #003878;
-    }
-
-    .syntax-constant {
-        color: #005cc5;
-    }
-
-    .syntax-variable {
-        color: #e36209;
-    }
-
-    .syntax-escape {
-        font-weight: bold;
-        color:       #22863a;
-    }
-
-    .syntax-comment {
-        color: #6a737d;
-    }
-
-    .syntax-error {
-        color: #b31d28;
     }
 
     /* Markup Highlighting */
